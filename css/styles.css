@@ -299,6 +299,21 @@ p { margin: 0 0 1rem; }
   margin-bottom: 1rem;
 }
 .hero-title span { display: block; }
+
+.hero-intro {
+  max-width: 42rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: var(--sa-muted);
+  line-height: 1.65;
+}
+.hero-intro p { margin: 0 0 1rem; }
+.hero-intro p:last-child { margin-bottom: 0; }
+.hero-question {
+  color: var(--sa-charcoal);
+  font-weight: 600;
+  font-size: 1.05em;
+}
 .hero-figure {
   margin: 0;
   background: var(--sa-sage);
