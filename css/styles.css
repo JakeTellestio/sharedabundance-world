@@ -330,26 +330,25 @@ p { margin: 0 0 1rem; }
   object-fit: contain;
   background: var(--sa-ivory);
 }
+.hero-above {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 1.25rem;
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  color: var(--sa-muted);
+  line-height: 1.6;
+}
+.hero-above p { margin: 0 0 0.85rem; }
+.hero-above p:last-child { margin-bottom: 0; }
+.hero-above .hero-question {
+  color: var(--sa-charcoal);
+  font-weight: 600;
+  font-size: 1.05em;
+}
 .hero-figure figcaption {
   padding: 0.85rem 1rem 0.5rem;
   font-size: 0.9rem;
   color: var(--sa-muted);
-}
-.hero-figure figcaption.hero-below {
-  text-align: left;
-  max-width: none;
-  margin: 0;
-  padding: 1.1rem 1rem 1.35rem;
-  font-size: clamp(1.02rem, 1.8vw, 1.15rem);
-  color: var(--sa-muted);
-  line-height: 1.65;
-}
-.hero-figure figcaption.hero-below p { margin: 0 0 1rem; }
-.hero-figure figcaption.hero-below p:last-child { margin-bottom: 0; }
-.hero-figure figcaption.hero-below .hero-question {
-  color: var(--sa-charcoal);
-  font-weight: 600;
-  font-size: 1.05em;
 }
 
 /* Cards & grids */
