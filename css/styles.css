@@ -941,3 +941,20 @@ p { margin: 0 0 1rem; }
     align-items: start;
   }
 }
+
+/* How-it-works long-form helpers */
+.prose-list {
+  margin: 1rem 0 1.25rem;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+  color: var(--sa-charcoal);
+}
+.prose-list li {
+  padding-left: 0.25rem;
+}
+.prose-list strong { color: var(--sa-forest); }
+.hiw-block {
+  margin: 1.25rem 0;
+}
+.reading .prose-list { max-width: 100%; }
