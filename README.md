@@ -1,8 +1,8 @@
 # Shared Abundance
 
-Public website for [sharedabundance.world](https://sharedabundance.world) — an open proposal for building productive businesses with AI and automation, then sharing available surplus equally among eligible members.
+Public website for [sharedabundance.world](https://sharedabundance.world) — building productive businesses with AI and automation, then sharing available surplus equally among eligible members.
 
-**Status:** Open proposal · Version 0.1
+**Status:** Shared Abundance · Building the commons
 
 ## Stack
 
@@ -14,11 +14,11 @@ Plain semantic HTML, CSS, and a small amount of vanilla JavaScript. No framework
 |-------|---------|
 | `/` | Home — proposition, process, and entry points |
 | `/how-it-works/` | Model detail, finances, growth, industries, FAQ |
-| `/business-001/` | Proposed first digital-services pilot |
+| `/business-001/` | First digital-services pilot |
 | `/pioneers/` | Early support with temporary, defined terms |
-| `/rules/` | Draft principles v0.1 and safeguards |
+| `/rules/` | Principles v0.1 and safeguards |
 | `/progress/` | Milestones from concept to operation |
-| `/contribute/` | Local contribution and proposal draft tools |
+| `/contribute/` | Local contribution and improvement draft tools |
 
 ## Local preview
 
@@ -30,11 +30,11 @@ Open http://localhost:8080/
 
 ## Contribution drafts
 
-Until a submission backend is configured, `/contribute/` keeps drafts in the browser and offers download (and copy for proposals). Nothing is sent to a server. Status messaging makes that explicit.
+Until a submission backend is configured, `/contribute/` keeps drafts in the browser and offers download (and copy for improvement drafts). Nothing is sent to a server. Status messaging makes that explicit.
 
 ## Assets
 
-Nineteen conceptual PNG illustrations live in `assets/`. They depict proposed applications of automation, not existing Shared Abundance operations.
+Nineteen PNG illustrations live in `assets/`. They depict the industries and operating model Shared Abundance is building toward, not existing Shared Abundance operations.
 
 ## Configuration still needed (owner)
 
@@ -45,4 +45,4 @@ Nineteen conceptual PNG illustrations live in `assets/`. They depict proposed ap
 
 ## License / notice
 
-Site content presents a concept-stage proposal. Illustrations are conceptual artwork. Do not treat page examples as forecasts, accounts, or offers of investment.
+Illustrations are artwork of the direction ahead. Do not treat page examples as forecasts, accounts, or offers of investment.

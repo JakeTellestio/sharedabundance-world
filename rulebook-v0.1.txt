@@ -1,6 +1,6 @@
-# Shared Abundance — draft principles v0.1
+# Shared Abundance — principles v0.1
 
-Plain-language website adaptation of the supplied concept. These are proposed principles, not an executed legal constitution. Implementation details and unresolved questions belong alongside the draft.
+Plain-language website adaptation of the supplied concept. These are the governing principles for Shared Abundance — not yet an executed legal constitution. Implementation details and open questions sit alongside them.
 
 1. **Broad membership.** The long-term aim is participation by every human being, with practical eligibility, verification and legal arrangements still to be developed.
 2. **Equal permanent entitlement.** Each eligible verified person has one equal claim on distributable surplus. A larger payment or contribution cannot purchase a larger permanent entitlement.
@@ -28,4 +28,4 @@ Plain-language website adaptation of the supplied concept. These are proposed pr
 ## Still to develop
 Legal form and jurisdictions; verification and eligibility; treatment of minors; privacy and security; distribution periods; reserves and reinvestment policy; pioneer terms and their endpoint; rule-amendment procedure; independent review; intervention authority and recovery after a shutdown.
 
-Revision record: v0.1 — Initial principles adapted for the website from the supplied concept. No adoption, legal approval or public vote is asserted.
+Revision record: v0.1 — Initial principles published on the website. No legal adoption or public vote is asserted.

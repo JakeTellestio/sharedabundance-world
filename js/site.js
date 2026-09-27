@@ -24,7 +24,7 @@
     });
   }
 
-  /* Contribution / proposal draft tools */
+  /* Contribution / improvement draft tools */
   function downloadText(filename, text) {
     var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
     var url = URL.createObjectURL(blob);
@@ -148,11 +148,11 @@
 
     function buildProposalText() {
       return [
-        "Shared Abundance — Proposal draft",
+        "Shared Abundance — Improvement draft",
         "Status: Local draft only. Not published or submitted.",
         "Generated: " + new Date().toISOString(),
         "",
-        "Proposal type: " + proposalForm.type.value.trim(),
+        "Improvement type: " + proposalForm.type.value.trim(),
         "Title: " + proposalForm.title.value.trim(),
         "",
         "Problem:",
@@ -193,10 +193,10 @@
       var text = buildProposalText();
       preview.hidden = false;
       preview.textContent = text;
-      downloadText("sa-proposal-" + slugify(proposalForm.title.value) + ".md", text);
+      downloadText("sa-improvement-" + slugify(proposalForm.title.value) + ".md", text);
       setStatus(
         proposalStatus,
-        "Proposal draft downloaded as a Markdown file. Nothing was sent or published.",
+        "Improvement draft downloaded as a Markdown file. Nothing was sent or published.",
         false
       );
     });
