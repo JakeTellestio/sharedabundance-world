@@ -1,0 +1,31 @@
+# Shared Abundance — draft principles v0.1
+
+Plain-language website adaptation of the supplied concept. These are proposed principles, not an executed legal constitution. Implementation details and unresolved questions belong alongside the draft.
+
+1. **Broad membership.** The long-term aim is participation by every human being, with practical eligibility, verification and legal arrangements still to be developed.
+2. **Equal permanent entitlement.** Each eligible verified person has one equal claim on distributable surplus. A larger payment or contribution cannot purchase a larger permanent entitlement.
+3. **Productive automation.** AI and machines should progressively perform work where they can do so reliably. People build, supervise and support the system as needed.
+4. **Protected shared assets.** Productive assets are held for the shared purpose and cannot quietly be converted into private property.
+5. **Available surplus is shared.** After legitimate costs, taxes, reserves, reinvestment and obligations, distributable surplus flows equally to eligible members under public rules.
+6. **An ambitious income objective.** The long-term goal is Universal High Income, dependent on the productive results the system can actually achieve.
+7. **Temporary pioneer advantages.** Early contributions may earn agreed compensation or limited returns. Any special financial entitlement has a defined endpoint.
+8. **Recognition for founders.** Founders and early contributors may receive lasting recognition, without larger permanent member entitlements.
+9. **Money does not buy authority.** Investment, tokens or contributions cannot purchase permanent authority over the governing rules.
+10. **Practical AI management.** AI may handle routine operations within established limits and demonstrated capabilities.
+11. **Human authority over the rules.** AI cannot rewrite the fundamental rules governing itself. People retain ultimate constitutional authority.
+12. **A defined intervention mechanism.** People must have a workable way to stop or override operations when serious problems arise.
+13. **Independent checks.** Important decisions should be examined by separate systems or reviewers. No single AI is an unquestionable authority.
+14. **Inspectable operations.** Rules, ownership, finances and major decisions should be open to inspection wherever security and privacy permit.
+15. **Understandable explanations.** Important rules and financial arrangements must have clear plain-language explanations.
+16. **Ordinary currencies.** Businesses can trade in existing currencies. A new currency is not required.
+17. **Applicable law and obligations.** Businesses must operate within applicable law and meet legitimate tax and other obligations.
+18. **Build additional productive capacity.** The initiative grows shared productive assets alongside existing businesses and ownership.
+19. **Limit discretionary power.** Design roles and systems to reduce opportunities for self-dealing, exclusion and diversion of assets.
+20. **Accountability for every role.** Founders, investors, developers, operators and AI providers remain subject to the same governing purpose and rules.
+21. **Work toward self-funding.** Outside resources support the launch. The aim is to fund continued operation and growth from productive results.
+22. **Protect future membership.** Current participants cannot permanently sell away the shared entitlement of future generations.
+
+## Still to develop
+Legal form and jurisdictions; verification and eligibility; treatment of minors; privacy and security; distribution periods; reserves and reinvestment policy; pioneer terms and their endpoint; rule-amendment procedure; independent review; intervention authority and recovery after a shutdown.
+
+Revision record: v0.1 — Initial principles adapted for the website from the supplied concept. No adoption, legal approval or public vote is asserted.
