@@ -1,4 +1,4 @@
-/* Shared Abundance — site styles */
+/* Shared Abundance · site styles */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
@@ -720,7 +720,7 @@ p { margin: 0 0 1rem; }
   color: var(--sa-muted);
   font-weight: 700;
 }
-.faq details[open] summary::after { content: "–"; }
+.faq details[open] summary::after { content: "-"; }
 .faq details p {
   margin: 0 0 1rem;
   color: var(--sa-muted);

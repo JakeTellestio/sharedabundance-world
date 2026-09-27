@@ -117,7 +117,7 @@
         context: (contribForm.context.value || "").trim()
       };
       var body = [
-        "Shared Abundance — Contribution draft",
+        "Shared Abundance · Contribution draft",
         "Status: Local draft only. Nothing has been sent to the project.",
         "Generated: " + new Date().toISOString(),
         "",
@@ -130,7 +130,7 @@
         "Availability / context:",
         data.context || "(not provided)",
         "",
-        "— End of draft —"
+        "- End of draft -"
       ].join("\n");
       downloadText("sa-contribution-" + slugify(data.title) + ".txt", body);
       setStatus(
@@ -148,7 +148,7 @@
 
     function buildProposalText() {
       return [
-        "Shared Abundance — Improvement draft",
+        "Shared Abundance · Improvement draft",
         "Status: Local draft only. Not published or submitted.",
         "Generated: " + new Date().toISOString(),
         "",
@@ -167,7 +167,7 @@
         "Trade-offs / open questions:",
         (proposalForm.tradeoffs.value || "").trim() || "(not provided)",
         "",
-        "— End of draft —"
+        "- End of draft -"
       ].join("\n");
     }
 

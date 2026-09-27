@@ -1,6 +1,6 @@
 # Shared Abundance
 
-Public website for [sharedabundance.world](https://sharedabundance.world) — building productive businesses with AI and automation, then sharing available surplus equally among eligible members.
+Public website for [sharedabundance.world](https://sharedabundance.world). Building productive businesses with AI and automation, then sharing available surplus equally among eligible members.
 
 **Status:** Shared Abundance · Building the commons
 
@@ -12,7 +12,7 @@ Plain semantic HTML, CSS, and a small amount of vanilla JavaScript. No framework
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Home — proposition, process, and entry points |
+| `/` | Home: proposition, process, and entry points |
 | `/how-it-works/` | Model detail, finances, growth, industries, FAQ |
 | `/business-001/` | First digital-services pilot |
 | `/pioneers/` | Early support with temporary, defined terms |
