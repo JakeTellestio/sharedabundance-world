@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Shared Abundance</title>
+  <rect width="64" height="64" rx="16" fill="#173E35"/>
+  <g fill="#F7F5EE">
+    <rect x="12" y="12" width="17" height="17" rx="5"/>
+    <rect x="35" y="12" width="17" height="17" rx="5"/>
+    <rect x="12" y="35" width="17" height="17" rx="5"/>
+    <rect x="35" y="35" width="17" height="17" rx="5"/>
+  </g>
+  <circle cx="32" cy="32" r="7" fill="#E7BC58"/>
+</svg>
