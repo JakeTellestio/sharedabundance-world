@@ -63,7 +63,7 @@
     var banner = document.createElement("div");
     banner.className = "note-box";
     banner.setAttribute("role", "status");
-    banner.textContent = "Thanks. If FormSubmit asked you to confirm the destination email, check info@sharedabundance.world and approve it once. After that, submissions arrive in that inbox.";
+    banner.textContent = "Thanks. Your message was sent to info@sharedabundance.world.";
     var main = document.getElementById("main");
     if (main && main.firstElementChild) {
       main.insertBefore(banner, main.firstElementChild.nextSibling);
