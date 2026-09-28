@@ -24,9 +24,7 @@
     });
   }
 
-  /* Contribution / improvement email tools */
-  var CONTACT_EMAIL = "info@sharedabundance.world";
-
+  /* Contribution / improvement forms */
   function setStatus(el, message, isError) {
     if (!el) return;
     el.hidden = false;
@@ -60,14 +58,18 @@
     return ok;
   }
 
-  function openMailto(subject, body) {
-    var url = "mailto:" + CONTACT_EMAIL
-      + "?subject=" + encodeURIComponent(subject)
-      + "&body=" + encodeURIComponent(body);
-    window.location.href = url;
+  var params = new URLSearchParams(window.location.search);
+  if (params.get("sent") === "1") {
+    var banner = document.createElement("div");
+    banner.className = "note-box";
+    banner.setAttribute("role", "status");
+    banner.textContent = "Thanks. If FormSubmit asked you to confirm the destination email, check info@sharedabundance.world and approve it once. After that, submissions arrive in that inbox.";
+    var main = document.getElementById("main");
+    if (main && main.firstElementChild) {
+      main.insertBefore(banner, main.firstElementChild.nextSibling);
+    }
   }
 
-  var params = new URLSearchParams(window.location.search);
   var typeParam = params.get("type");
   if (typeParam) {
     var contribArea = document.getElementById("contrib-area");
@@ -93,37 +95,14 @@
   if (contribForm) {
     var contribStatus = document.getElementById("contrib-status");
     contribForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!requireFields(contribForm, ["area", "title", "offer"])) {
+      if (!requireFields(contribForm, ["email", "area", "title", "offer"])) {
+        e.preventDefault();
         setStatus(contribStatus, "Please complete the required fields before sending.", true);
         return;
       }
-      var data = {
-        area: contribForm.area.value.trim(),
-        title: contribForm.title.value.trim(),
-        offer: contribForm.offer.value.trim(),
-        context: (contribForm.context.value || "").trim()
-      };
-      var body = [
-        "Shared Abundance · Contribution",
-        "",
-        "Contribution area: " + data.area,
-        "Title: " + data.title,
-        "",
-        "What I can offer:",
-        data.offer,
-        "",
-        "Availability / context:",
-        data.context || "(not provided)",
-        "",
-        "(Please keep your reply address so we can respond.)"
-      ].join("\n");
-      openMailto("Contribution: " + data.title, body);
-      setStatus(
-        contribStatus,
-        "Your email app should open with a message to info@sharedabundance.world. Send it from there.",
-        false
-      );
+      var subj = contribForm.querySelector('input[name="_subject"]');
+      if (subj) subj.value = "Shared Abundance · Contribution: " + contribForm.title.value.trim();
+      setStatus(contribStatus, "Sending…", false);
     });
   }
 
@@ -134,8 +113,6 @@
 
     function buildProposalText() {
       return [
-        "Shared Abundance · Improvement suggestion",
-        "",
         "Improvement type: " + proposalForm.type.value.trim(),
         "Title: " + proposalForm.title.value.trim(),
         "",
@@ -149,16 +126,14 @@
         proposalForm.benefit.value.trim(),
         "",
         "Trade-offs / open questions:",
-        (proposalForm.tradeoffs.value || "").trim() || "(not provided)",
-        "",
-        "(Please keep your reply address so we can respond.)"
+        (proposalForm.tradeoffs.value || "").trim() || "(not provided)"
       ].join("\n");
     }
 
     var previewBtn = document.getElementById("proposal-preview-btn");
     if (previewBtn) {
       previewBtn.addEventListener("click", function () {
-        if (!requireFields(proposalForm, ["type", "title", "problem", "change", "benefit"])) {
+        if (!requireFields(proposalForm, ["email", "type", "title", "problem", "change", "benefit"])) {
           setStatus(proposalStatus, "Please complete the required fields before previewing.", true);
           return;
         }
@@ -169,20 +144,14 @@
     }
 
     proposalForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!requireFields(proposalForm, ["type", "title", "problem", "change", "benefit"])) {
+      if (!requireFields(proposalForm, ["email", "type", "title", "problem", "change", "benefit"])) {
+        e.preventDefault();
         setStatus(proposalStatus, "Please complete the required fields before sending.", true);
         return;
       }
-      var text = buildProposalText();
-      preview.hidden = false;
-      preview.textContent = text;
-      openMailto("Improvement: " + proposalForm.title.value.trim(), text);
-      setStatus(
-        proposalStatus,
-        "Your email app should open with a message to info@sharedabundance.world. Send it from there.",
-        false
-      );
+      var subj = proposalForm.querySelector('input[name="_subject"]');
+      if (subj) subj.value = "Shared Abundance · Improvement: " + proposalForm.title.value.trim();
+      setStatus(proposalStatus, "Sending…", false);
     });
   }
 })();
