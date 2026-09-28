@@ -24,18 +24,8 @@
     });
   }
 
-  /* Contribution / improvement draft tools */
-  function downloadText(filename, text) {
-    var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
-  }
+  /* Contribution / improvement email tools */
+  var CONTACT_EMAIL = "info@sharedabundance.world";
 
   function setStatus(el, message, isError) {
     if (!el) return;
@@ -53,32 +43,30 @@
 
   function requireFields(form, names) {
     clearFieldErrors(form);
-    var missing = [];
+    var ok = true;
     names.forEach(function (name) {
       var field = form.elements[name];
       if (!field) return;
       var value = (field.value || "").trim();
       if (!value) {
-        missing.push(name);
+        ok = false;
         field.setAttribute("aria-invalid", "true");
-        var err = document.createElement("span");
+        var err = document.createElement("div");
         err.className = "field-error";
-        err.textContent = "Required";
+        err.textContent = "This field is required.";
         field.parentNode.appendChild(err);
       }
     });
-    return missing.length === 0;
+    return ok;
   }
 
-  function slugify(s) {
-    return (s || "draft")
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "")
-      .slice(0, 48) || "draft";
+  function openMailto(subject, body) {
+    var url = "mailto:" + CONTACT_EMAIL
+      + "?subject=" + encodeURIComponent(subject)
+      + "&body=" + encodeURIComponent(body);
+    window.location.href = url;
   }
 
-  /* Preselect from query params */
   var params = new URLSearchParams(window.location.search);
   var typeParam = params.get("type");
   if (typeParam) {
@@ -86,17 +74,17 @@
     var proposalType = document.getElementById("proposal-type");
     var map = {
       "business-idea": { contrib: "Business ideas and customer research", proposal: "Business idea" },
-      "rule-improvement": { contrib: "Legal and operating structures", proposal: "Rule improvement" },
-      "economic-model": { contrib: "Financial modeling", proposal: "Economic model" },
-      "safeguard": { contrib: "Legal and operating structures", proposal: "Operational safeguard" }
+      "rule-improvement": { contrib: "Legal and operating setup", proposal: "Rule improvement" },
+      "economic-model": { contrib: "Money model", proposal: "Economic model" },
+      "safeguard": { contrib: "Legal and operating setup", proposal: "Operational safeguard" }
     };
     var mapped = map[typeParam];
     if (mapped) {
       if (contribArea) contribArea.value = mapped.contrib;
       if (proposalType) proposalType.value = mapped.proposal;
-      if (typeParam.indexOf("rule") !== -1 || typeParam.indexOf("business") !== -1) {
-        var target = document.getElementById("proposal-form");
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      var target = document.getElementById("proposal-form");
+      if (target && typeParam.indexOf("rule") === 0) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }
@@ -107,7 +95,7 @@
     contribForm.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!requireFields(contribForm, ["area", "title", "offer"])) {
-        setStatus(contribStatus, "Please complete the required fields before downloading.", true);
+        setStatus(contribStatus, "Please complete the required fields before sending.", true);
         return;
       }
       var data = {
@@ -117,9 +105,7 @@
         context: (contribForm.context.value || "").trim()
       };
       var body = [
-        "Shared Abundance · Contribution draft",
-        "Status: Local draft only. Nothing has been sent to the project.",
-        "Generated: " + new Date().toISOString(),
+        "Shared Abundance · Contribution",
         "",
         "Contribution area: " + data.area,
         "Title: " + data.title,
@@ -130,12 +116,12 @@
         "Availability / context:",
         data.context || "(not provided)",
         "",
-        "- End of draft -"
+        "(Please keep your reply address so we can respond.)"
       ].join("\n");
-      downloadText("sa-contribution-" + slugify(data.title) + ".txt", body);
+      openMailto("Contribution: " + data.title, body);
       setStatus(
         contribStatus,
-        "Draft downloaded. Nothing was sent to Shared Abundance. Keep or share the file yourself until a submission service is configured.",
+        "Your email app should open with a message to info@sharedabundance.world. Send it from there.",
         false
       );
     });
@@ -148,9 +134,7 @@
 
     function buildProposalText() {
       return [
-        "Shared Abundance · Improvement draft",
-        "Status: Local draft only. Not published or submitted.",
-        "Generated: " + new Date().toISOString(),
+        "Shared Abundance · Improvement suggestion",
         "",
         "Improvement type: " + proposalForm.type.value.trim(),
         "Title: " + proposalForm.title.value.trim(),
@@ -167,7 +151,7 @@
         "Trade-offs / open questions:",
         (proposalForm.tradeoffs.value || "").trim() || "(not provided)",
         "",
-        "- End of draft -"
+        "(Please keep your reply address so we can respond.)"
       ].join("\n");
     }
 
@@ -180,45 +164,25 @@
         }
         preview.hidden = false;
         preview.textContent = buildProposalText();
-        setStatus(proposalStatus, "Preview ready below. This draft has not been submitted.", false);
+        setStatus(proposalStatus, "Preview ready below.", false);
       });
     }
 
     proposalForm.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!requireFields(proposalForm, ["type", "title", "problem", "change", "benefit"])) {
-        setStatus(proposalStatus, "Please complete the required fields before downloading.", true);
+        setStatus(proposalStatus, "Please complete the required fields before sending.", true);
         return;
       }
       var text = buildProposalText();
       preview.hidden = false;
       preview.textContent = text;
-      downloadText("sa-improvement-" + slugify(proposalForm.title.value) + ".md", text);
+      openMailto("Improvement: " + proposalForm.title.value.trim(), text);
       setStatus(
         proposalStatus,
-        "Improvement draft downloaded as a Markdown file. Nothing was sent or published.",
+        "Your email app should open with a message to info@sharedabundance.world. Send it from there.",
         false
       );
     });
-
-    var copyBtn = document.getElementById("proposal-copy-btn");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", function () {
-        if (!requireFields(proposalForm, ["type", "title", "problem", "change", "benefit"])) {
-          setStatus(proposalStatus, "Please complete the required fields before copying.", true);
-          return;
-        }
-        var text = buildProposalText();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function () {
-            setStatus(proposalStatus, "Draft copied to clipboard. Nothing was sent to the project.", false);
-          }).catch(function () {
-            setStatus(proposalStatus, "Clipboard copy failed. Use Download instead.", true);
-          });
-        } else {
-          setStatus(proposalStatus, "Clipboard is unavailable in this browser. Use Download instead.", true);
-        }
-      });
-    }
   }
 })();
