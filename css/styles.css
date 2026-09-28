@@ -858,7 +858,7 @@ p { margin: 0 0 1rem; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 2rem;
 }
 @media (max-width: 800px) {
