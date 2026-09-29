@@ -1,6 +1,26 @@
 (function () {
   "use strict";
 
+  /* Page hits: public beacon to Jake's Mini (no secret in the page).
+   * Mini handler should log every path and WhatsApp Jake only for home.
+   * Easy to disable: remove this block or return 204 from /site-hit.
+   */
+  (function trackHit() {
+    var endpoint = "https://jakes-mac-mini2.tail98d8ce.ts.net/site-hit";
+    var path = window.location.pathname || "/";
+    var home = path === "/" || path === "/index.html";
+    var qs =
+      "path=" + encodeURIComponent(path) +
+      "&home=" + (home ? "1" : "0") +
+      "&ref=" + encodeURIComponent(document.referrer || "") +
+      "&t=" + Date.now();
+    try {
+      var img = new Image();
+      img.referrerPolicy = "no-referrer";
+      img.src = endpoint + "?" + qs;
+    } catch (e) { /* ignore */ }
+  })();
+
   /* Mobile nav */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
