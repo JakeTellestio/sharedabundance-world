@@ -2,22 +2,32 @@
   "use strict";
 
   /* Page hits: public beacon to Jake's Mini (no secret in the page).
-   * Mini handler should log every path and WhatsApp Jake only for home.
+   * Logs path + source fields. Mini WhatsApps Jake only for home=1.
    * Easy to disable: remove this block or return 204 from /site-hit.
    */
   (function trackHit() {
     var endpoint = "https://jakes-mac-mini2.tail98d8ce.ts.net/site-hit";
     var path = window.location.pathname || "/";
     var home = path === "/" || path === "/index.html";
-    var qs =
-      "path=" + encodeURIComponent(path) +
-      "&home=" + (home ? "1" : "0") +
-      "&ref=" + encodeURIComponent(document.referrer || "") +
-      "&t=" + Date.now();
+    var params = new URLSearchParams(window.location.search || "");
+    var ref = document.referrer || "";
+    var utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    var parts = [
+      "path=" + encodeURIComponent(path),
+      "home=" + (home ? "1" : "0"),
+      "ref=" + encodeURIComponent(ref.slice(0, 500)),
+      "lang=" + encodeURIComponent((navigator.language || "").slice(0, 32)),
+      "landing=" + encodeURIComponent((window.location.search || "").slice(0, 300)),
+      "t=" + Date.now()
+    ];
+    utmKeys.forEach(function (k) {
+      var v = (params.get(k) || "").trim();
+      if (v) parts.push(k + "=" + encodeURIComponent(v.slice(0, 120)));
+    });
     try {
       var img = new Image();
       img.referrerPolicy = "no-referrer";
-      img.src = endpoint + "?" + qs;
+      img.src = endpoint + "?" + parts.join("&");
     } catch (e) { /* ignore */ }
   })();
 
